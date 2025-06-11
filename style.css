@@ -1,0 +1,716 @@
+/* style.css */
+
+/* --- Variáveis de Cores (AGORA COM AS CORES EXATAS DO MANUAL TEGBE!) --- */
+:root {
+    --primary-blue-tegbe: #21244D;   /* Azul escuro corporativo (HEX: #21244D) */
+    --accent-yellow-tegbe: #F2D95D;  /* Amarelo dinâmico (HEX: #F2D95D) */
+    --accent-red-tegbe: #E61A4A;     /* Vermelho/Magenta de inovação (HEX: #E61A4A) */
+
+    /* Variações de Azul (do manual - para usos diversos, ex: hover, background) */
+    --blue-variant-1: #006DB7;
+    --blue-variant-2: #22398E;
+    --blue-variant-3: #2B2F88;
+    --blue-variant-4: #2C336A;
+
+    /* Cores de texto e fundo neutras (baseadas no contraste com as cores da marca) */
+    --text-dark: #333333;
+    --text-light: #666666;
+    --background-light: #F8F8F8;
+    --background-dark: #111B2B; /* Mantido como um fundo escuro genérico para contraste forte */
+    --white: #FFFFFF;
+    --border-light: #E0E0E0;
+}
+
+/* --- Base e Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* Usar Visby CF se disponível - IMPORTANTE: Você precisa carregar esta fonte! */
+    /* Exemplo de como carregar (se você tiver os arquivos Visby CF): */
+    /*
+    @font-face {
+        font-family: 'Visby CF';
+        src: url('fonts/VisbyCF-Regular.woff2') format('woff2'),
+             url('fonts/VisbyCF-Regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Visby CF';
+        src: url('fonts/VisbyCF-Bold.woff2') format('woff2'),
+             url('fonts/VisbyCF-Bold.woff') format('woff');
+        font-weight: 700;
+        font-style: normal;
+    }
+    */
+    font-family: 'Visby CF', 'Montserrat', sans-serif; /* Visby CF como principal, Montserrat como fallback */
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1280px; /* Um pouco mais largo para um visual mais expansivo como V4/G4 */
+    margin: 0 auto;
+    padding: 0 25px; /* Mais padding nas laterais */
+}
+
+section {
+    padding: 100px 0; /* Padding ainda maior para mais 'respiro' */
+}
+
+/* --- Tipografia (Ajustada com foco na Visby CF e impacto) --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Visby CF', 'Montserrat', sans-serif; /* Usar Visby CF se disponível */
+    color: var(--primary-blue-tegbe);
+    margin-bottom: 25px;
+    line-height: 1.2;
+    font-weight: 800; /* Mais impacto para títulos */
+}
+
+h1 {
+    font-size: 4.5em; /* Tamanho muito maior para o Hero */
+    font-weight: 900; /* Extra bold */
+}
+
+h2 {
+    font-size: 3.2em;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 70px; /* Mais espaço */
+}
+
+h3 {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif; /* Mantido como uma boa opção para corpo de texto */
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+/* --- Botões (CTAs - Cores e estilo refinados) --- */
+.btn {
+    display: inline-block;
+    padding: 18px 35px; /* Padding generoso */
+    border-radius: 10px; /* Mais arredondado */
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra sutil */
+}
+
+.btn-primary {
+    background-color: var(--primary-blue-tegbe);
+    color: var(--white);
+    border: 2px solid var(--primary-blue-tegbe);
+}
+
+.btn-primary:hover {
+    background-color: var(--blue-variant-2); /* Uma variação do azul para hover */
+    border-color: var(--blue-variant-2);
+    transform: translateY(-4px); /* Mais elevação */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.btn-cta {
+    background-color: var(--accent-red-tegbe); /* Vermelho/Magenta para CTA principal */
+    color: var(--white);
+    border: 2px solid var(--accent-red-tegbe);
+    box-shadow: 0 8px 25px rgba(230, 26, 74, 0.5); /* Sombra intensa do CTA */
+}
+
+.btn-cta:hover {
+    background-color: var(--accent-yellow-tegbe); /* Amarelo para hover no CTA (alto contraste e dinamismo) */
+    border-color: var(--accent-yellow-tegbe);
+    color: var(--primary-blue-tegbe); /* Texto escuro no botão amarelo */
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(242, 217, 93, 0.7);
+}
+
+.btn-primary-outline {
+    background-color: transparent;
+    color: var(--primary-blue-tegbe);
+    border: 2px solid var(--primary-blue-tegbe);
+}
+
+.btn-primary-outline:hover {
+    background-color: var(--primary-blue-tegbe);
+    color: var(--white);
+    transform: translateY(-4px);
+}
+
+.cta-subtitle {
+    font-size: 1em;
+    color: var(--text-light);
+    margin-top: 10px;
+    text-align: center;
+    font-style: italic;
+    font-weight: 600;
+}
+
+/* --- Header --- */
+.main-header {
+    background-color: var(--white);
+    padding: 25px 0;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header .logo img {
+    height: 65px; /* Ajuste para o logo Tegbe - Prancheta 1.png ou Foto de perfil.jpg */
+    width: auto;
+    object-fit: contain;
+}
+
+.main-nav .btn-primary {
+    padding: 14px 30px;
+    font-size: 1.1em;
+    border-radius: 8px;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    background-color: var(--background-dark); /* Fundo escuro para contraste forte */
+    color: var(--white);
+    padding: 120px 0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    min-height: 90vh; /* Ocupa quase toda a tela inicial */
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 80px; /* Mais espaço entre elementos */
+}
+
+.hero-content {
+    flex: 1;
+    min-width: 400px;
+    max-width: 650px;
+    padding-right: 30px;
+    z-index: 2; /* Acima de qualquer fundo que possa ter */
+}
+
+.hero-content h1 {
+    color: var(--white);
+    font-size: 5em; /* Tamanho GIGANTE para impacto */
+    margin-bottom: 35px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3); /* Sombra sutil no texto */
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 30px;
+    font-weight: 400; /* Mais leve para leitura */
+}
+
+.hero-content .btn-cta {
+    margin-top: 50px;
+}
+
+.hero-image {
+    flex: 1;
+    min-width: 350px;
+    max-width: 550px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px; /* Mais arredondamento */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); /* Sombra mais forte e difusa */
+    animation: floatImage 3s ease-in-out infinite; /* Animação sutil de flutuação */
+}
+
+@keyframes floatImage {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- Seção "O que entregamos" (Services Section) --- */
+.services-section {
+    background-color: var(--background-light);
+    text-align: center;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 3 colunas, mais robusto */
+    gap: 50px; /* Mais espaçamento */
+    margin-top: 70px;
+}
+
+.service-item {
+    background-color: var(--white);
+    padding: 40px; /* Aumentar padding */
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12); /* Sombra mais definida */
+    text-align: center; /* Centralizar conteúdo do card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 6px solid var(--accent-red-tegbe); /* Detalhe de cor na parte inferior */
+    position: relative;
+    overflow: hidden; /* Para efeitos de fundo */
+}
+
+.service-item::before { /* Efeito de fundo sutil com o amarelo */
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--accent-yellow-tegbe) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.service-item:hover::before {
+    opacity: 0.05; /* Efeito sutil ao hover */
+}
+
+.service-item:hover {
+    transform: translateY(-10px); /* Mais elevação */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.service-item i {
+    font-size: 4em; /* Ícones ainda maiores */
+    color: var(--accent-red-tegbe); /* Cor do ícone */
+    margin-bottom: 25px;
+    z-index: 1; /* Acima do efeito de fundo */
+    position: relative;
+}
+
+.service-item h3 {
+    color: var(--primary-blue-tegbe);
+    margin-bottom: 15px;
+}
+
+.service-item p {
+    color: var(--text-light);
+    font-size: 1.1em;
+}
+
+/* --- Seção de Prova Social/Cases de Sucesso (Case Studies Section) --- */
+.case-studies-section {
+    background-color: var(--primary-blue-tegbe); /* Fundo azul para a seção de cases */
+    color: var(--white);
+    text-align: center;
+    padding: 100px 0;
+}
+
+.case-studies-section h2 {
+    color: var(--accent-yellow-tegbe); /* Título em amarelo para contraste */
+    margin-bottom: 30px;
+}
+
+.case-studies-section p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2em;
+    margin-bottom: 50px;
+}
+
+.case-study-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.case-study-item {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.case-study-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+}
+
+.case-study-item img {
+    max-width: 100%;
+    height: 220px; /* Altura fixa para uniformidade nos cards */
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.case-study-item h3 {
+    color: var(--primary-blue-tegbe);
+    font-size: 1.7em;
+    margin-bottom: 10px;
+}
+
+.case-study-item p {
+    font-size: 1em;
+    color: var(--text-light);
+}
+
+.case-studies-section .btn-primary-outline {
+    margin-top: 70px;
+    color: var(--accent-yellow-tegbe);
+    border-color: var(--accent-yellow-tegbe);
+}
+
+.case-studies-section .btn-primary-outline:hover {
+    background-color: var(--accent-yellow-tegbe);
+    color: var(--primary-blue-tegbe); /* Texto azul no hover */
+}
+
+
+/* --- Seção "Para quem não é a TegBe" (Disclaimer Section) --- */
+.disclaimer-section {
+    background-color: var(--accent-red-tegbe); /* Fundo com a cor de inovação */
+    color: var(--white);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.disclaimer-section h2 {
+    color: var(--white);
+    font-size: 3.5em;
+    margin-bottom: 50px;
+}
+
+.disclaimer-section ul {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+
+.disclaimer-section ul li {
+    font-size: 1.8em; /* Impacto maior */
+    margin-bottom: 25px;
+    position: relative;
+    padding-left: 55px;
+    text-align: left;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.disclaimer-section ul li::before {
+    content: '✖';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--accent-yellow-tegbe); /* Ícone em amarelo para contraste */
+    position: absolute;
+    left: 0;
+    font-size: 1.3em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.disclaimer-section h3 {
+    color: var(--white);
+    font-size: 3em;
+    margin-top: 60px;
+    font-style: italic; /* Adiciona um toque de diferenciação */
+}
+
+/* --- Seção "Por que a TegBe?" (Why Tegbe Section) --- */
+.why-tegbe-section {
+    background-color: var(--background-light);
+    text-align: center;
+}
+
+.why-tegbe-section h2 {
+    color: var(--primary-blue-tegbe);
+}
+
+.why-tegbe-section ul {
+    list-style: none;
+    padding: 0;
+    max-width: 900px;
+    margin: 50px auto 0 auto;
+    text-align: left;
+}
+
+.why-tegbe-section ul li {
+    font-size: 1.4em;
+    margin-bottom: 25px;
+    position: relative;
+    padding-left: 60px; /* Mais espaço para ícone e imagem */
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.why-tegbe-section ul li::before {
+    content: '✔';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--primary-blue-tegbe);
+    position: absolute;
+    left: 0;
+    font-size: 1.6em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.why-tegbe-section .inline-asset {
+    max-height: 50px; /* Tamanho da imagem Mercado Livre */
+    margin-left: 20px;
+    object-fit: contain;
+    border-radius: 5px; /* Leve arredondamento */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra sutil */
+}
+
+/* --- Seção de Contato/Formulário (Contact Section) --- */
+.contact-section {
+    background-color: var(--primary-blue-tegbe); /* Cor primária para o fundo */
+    color: var(--white);
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('sdcsdc.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1; /* Ainda mais sutil */
+    z-index: 0;
+    pointer-events: none; /* Garante que não interfira com cliques */
+}
+
+.contact-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-section h2 {
+    color: var(--accent-yellow-tegbe); /* Título em amarelo para destaque */
+    font-size: 3.5em;
+}
+
+.contact-section p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.25em;
+    margin-bottom: 50px;
+}
+
+.contact-form {
+    max-width: 700px; /* Formulário um pouco mais largo */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: rgba(0, 0, 0, 0.2); /* Fundo mais escuro/transparente */
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4); /* Sombra mais forte */
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+    width: 100%;
+    padding: 20px; /* Padding generoso */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    font-size: 1.1em;
+    background-color: rgba(255, 255, 255, 0.08); /* Fundo ainda mais transparente */
+    color: var(--white);
+    outline: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--accent-yellow-tegbe); /* Borda de foco amarela */
+    box-shadow: 0 0 0 4px rgba(242, 217, 93, 0.4); /* Sombra de foco amarela */
+}
+
+.contact-form textarea {
+    min-height: 180px;
+    resize: vertical;
+}
+
+.contact-form .btn-cta {
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--primary-blue-tegbe);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 50px 0;
+    font-size: 1em;
+    border-top: 5px solid var(--accent-red-tegbe); /* Detalhe de cor no rodapé */
+}
+
+.main-footer a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.main-footer a:hover {
+    color: var(--accent-yellow-tegbe); /* Links do footer amarelos no hover */
+}
+
+
+/* --- Responsividade (Media Queries - Mais refinada) --- */
+@media (max-width: 1024px) {
+    h1 { font-size: 4em; }
+    h2 { font-size: 2.8em; }
+    .hero-section .container {
+        gap: 50px;
+    }
+}
+
+@media (max-width: 992px) {
+    section { padding: 80px 0; }
+    h1 { font-size: 3.5em; }
+    h2 { font-size: 2.5em; margin-bottom: 50px; }
+    .hero-section .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    .hero-content {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+    .hero-image {
+        order: -1;
+        margin-bottom: 30px;
+    }
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .disclaimer-section ul li {
+        font-size: 1.5em;
+        padding-left: 45px;
+    }
+    .why-tegbe-section ul li {
+        font-size: 1.2em;
+        padding-left: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    section { padding: 60px 0; }
+    h1 { font-size: 2.8em; }
+    h2 { font-size: 2.2em; margin-bottom: 40px; }
+    h3 { font-size: 1.8em; }
+    p { font-size: 1.1em; }
+
+    .btn {
+        padding: 15px 30px;
+        font-size: 1.05em;
+    }
+    .main-header .logo img {
+        height: 55px;
+    }
+    .main-nav .btn-primary {
+        padding: 12px 25px;
+        font-size: 0.98em;
+    }
+    .hero-content h1 {
+        font-size: 3.2em;
+    }
+    .hero-content p {
+        font-size: 1.2em;
+    }
+    .service-item { padding: 35px; }
+    .service-item i { font-size: 3.5em; }
+    .case-study-item img { height: 200px; }
+    .disclaimer-section h2, .contact-section h2 { font-size: 2.8em; }
+    .disclaimer-section ul li { font-size: 1.3em; }
+    .why-tegbe-section ul li { font-size: 1.1em; padding-left: 45px; }
+    .why-tegbe-section ul li::before { font-size: 1.4em; }
+    .contact-form { padding: 40px; }
+}
+
+@media (max-width: 480px) {
+    .container { padding: 0 15px; }
+    h1 { font-size: 2.5em; margin-bottom: 20px; }
+    h2 { font-size: 1.8em; margin-bottom: 30px; }
+    .hero-section { padding: 50px 0; min-height: auto; }
+    .hero-content .btn-cta { width: 100%; }
+    .services-grid { gap: 20px; }
+    .case-study-grid { gap: 20px; }
+    .disclaimer-section h2, .contact-section h2 { font-size: 2.2em; }
+    .disclaimer-section ul li { font-size: 1.1em; padding-left: 30px; }
+    .why-tegbe-section ul li { font-size: 1em; padding-left: 35px; }
+    .why-tegbe-section .inline-asset { max-height: 35px; margin-left: 10px; }
+    .contact-form { padding: 25px; gap: 20px; }
+    .contact-form input[type="text"], .contact-form input[type="email"], .contact-form input[type="tel"], .contact-form textarea { padding: 16px; font-size: 1em; }
+    .main-footer { padding: 30px 0; }
+}
+
+/* Estilos para animação Fade-in ao Scroll (já no JS) */
+.js-fade-in {
+    opacity: 0;
+    transform: translateY(30px); /* Mais movimento */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Animação mais suave */
+}
+
+.js-fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
